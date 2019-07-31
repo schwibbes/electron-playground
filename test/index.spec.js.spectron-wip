@@ -1,0 +1,89 @@
+const chai = require('chai')
+const chaiAsPromised = require('chai-as-promised')
+const Application = require("spectron").Application;
+const path = require('path');
+
+global.before(function () {
+    chai.should()
+    chai.use(chaiAsPromised)
+})
+
+describe('Base Tests', () => {
+    //this.timeout(15 * 1000);
+    beforeEach(done => {
+        this.app =  new Application({
+            path: path.join(__dirname, "..", "node_modules", ".bin", "electron.cmd"),
+            args: [path.join(__dirname, "..")],
+            //requireName: 'nodeRequire',
+            env: {
+                NODE_ENV: 'test'
+            }
+        })
+        chai.should();
+        chai.use(chaiAsPromised);
+        chaiAsPromised.transferPromiseness = this.app.transferPromiseness;
+        this.app.start(done)
+        .catch((err) => { 
+            console.log('Error:\n', err)
+        }).then(x => {
+
+            x.client.getWindowCount()
+                .then(y => {
+                    return console.log(y);
+                })
+                .catch(z => {
+                    return console.log(z);
+                })
+
+            console.log("i am DONE")
+            //done();
+        });
+    })
+    afterEach(done => {
+        if(this.app && this.app.isRunning()) { 
+            return this.app.stop(); 
+        }
+    })
+    
+    xit('opens a window', function (done) {
+        return app.client.waitUntilWindowLoaded()
+        .getWindowCount().should.eventually.equal(1)
+        .then(() => done())
+        
+    })
+    
+    xit('correct title', function (done) {
+        return app.client.getTitle()
+        .should.eventually.equal("Hello")
+        .then(() => done())
+    })
+    
+    it('some test', async () => {
+        await waitUntilWindow(app, 'index.html', 'Login window never appeared.', 15000);
+        expect('foo').to.equal('bar');
+    });
+    
+})
+
+async function waitUntilWindow(app, urlPart, msg, timeoutMs = 15000, interval = 150) {
+    await app.client.waitUntil(
+      async () => {
+        return selectWindow(app, urlPart);
+      },
+      timeoutMs,
+      msg || `Didn't see window with url part ${urlPart} in ${timeoutMs} ms.`,
+      interval
+    );
+  }
+
+async function selectWindow(app, urlPart) {
+    const windowCount = await app.client.getWindowCount();
+    for (let i = 0; i < windowCount; i++) {
+      await app.client.windowByIndex(i);
+      const url = await app.client.getUrl();
+      if (url.includes(urlPart)) {
+        return true;
+      }
+    }
+    return false;
+  }

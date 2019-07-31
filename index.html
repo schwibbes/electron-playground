@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>EBST (Electron Based Setup Tool)</title>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="nav-about" href="about.html">about</a>
+        </li>
+      </ul>
+      
+    </div>
+    <a class="btn btn-primary" role="button" href="#" id="btn-apply">apply</a>
+
+  </nav>
+  
+  <div class="alert alert-primary" role="alert" id="welcome-message">
+    <h4 class="alert-heading">hi there;)</h4>
+    <p>just change some values below, then *apply* on the top right</p>
+  </div>
+  
+  <div class="alert alert-success d-none" role="alert" id="success-message">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  </div>
+  
+  
+  <div class="container">
+    
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 60%">service</th>
+          <th scope="col" style="width: 20%">port</th>
+          <th scope="col" style="width: 20%">auto-start</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>calc</td>
+          <td>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text">port</span>
+              </div>
+              <input type="text" class="form-control" config-value="port-auth" aria-label="port to expose" placeholder="8080">
+            </div>
+          </td>
+          <td>
+            <div class="input-group mb-3">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                <label class="custom-control-label" for="defaultUnchecked"></label>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>auth</td>
+          <td>
+            <div class="input-group mb-1">
+              <div class="input-group-prepend">
+                <span class="input-group-text">port</span>
+              </div>
+              <input type="text" class="form-control" config-value="port-calc" aria-label="port to expose" placeholder="8180">
+            </div>
+          </td>
+          <td>
+            <div class="input-group mb-1">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                <label class="custom-control-label" for="defaultUnchecked"></label>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    
+    
+    
+    
+    <script src="index.js"></script>
+  </body>
+  </html>
