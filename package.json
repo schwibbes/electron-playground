@@ -23,6 +23,6 @@
     "bootstrap": "^4.3.1"
   },
   "build": {
-    "appId": "com.github.schwibbes.elec"
+    "appId": "com.github.schwibbes.electron-playground"
   }
 }

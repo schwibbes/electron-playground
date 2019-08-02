@@ -90,3 +90,4 @@ out/
 
 # electron-build
 dist/
+*.stackdump

@@ -17,14 +17,14 @@ app.on('ready', function(){
       height: 700, 
       webPreferences: {
         nodeIntegration: true
-      },
-      devTools: false
+      }
     });
   }
   main_window.loadURL('file://' + __dirname + '/index.html');
-  main_window.maximize()
   
-  main_window.webContents.openDevTools();
+  // dev environment
+  main_window.maximize()
+  //main_window.webContents.openDevTools();
   
   trayIcon(path.join(__dirname, 'icon.jpg'), main_window);
   menuBar(main_window)
